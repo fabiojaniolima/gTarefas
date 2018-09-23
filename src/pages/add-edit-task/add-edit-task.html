@@ -17,14 +17,16 @@
     </ion-item>
   </ion-list>
 
-  <button ion-button item-end icon-start color="light">
+  <button ion-button item-end icon-start color="light" (click)="attachPhoto()">
     <ion-icon name="camera"></ion-icon>
     Anexar imagem
   </button>
 
-  <ion-card>
+  <input type="file" #fileInput style="visibility: hidden; height: 0px" class="file-input" name="files[]" (change)="processWebImage($event)" accept="image/*">
+
+  <ion-card *ngIf="photo">
     <h2>Previsualização</h2>
-    <img src="http://via.placeholder.com/343x200/d00254/f565845">
+    <img src="{{photo}}">
   </ion-card>
 
   <div padding>
