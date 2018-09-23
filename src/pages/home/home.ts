@@ -9,8 +9,8 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController) { }
 
-  openAddEditTaskPage(): void {
-    this.navCtrl.push('AddEditTaskPage');
+  openAddEditTaskPage(action: any): void {
+    this.navCtrl.push('AddEditTaskPage', action);
   }
 
   dialogDeleteTask(slidingItem: ItemSliding) {
