@@ -46,21 +46,24 @@ $colors: (
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-
+$item-ios-detail-push-show: true;
+$item-ios-detail-push-color: #488aff;
 
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
-
+$item-md-detail-push-show: true;
+$item-md-detail-push-color: #488aff;
 
 
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
 
-
+$item-wp-detail-push-show: true;
+$item-wp-detail-push-color: #488aff;
 
 
 // App Theme
@@ -86,3 +89,7 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+
+// Altera a cor da toolbar para azul em todas as plataformas
+$toolbar-background: #488aff;
