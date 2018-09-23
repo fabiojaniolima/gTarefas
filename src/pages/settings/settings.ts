@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'page-settings',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
 })
 export class SettingsPage {
 
-  constructor() { }
+  constructor(public navCtrl: NavController) { }
+
+  openTarget(page: string): void {
+    this.navCtrl.push(page);
+  }
+
 }

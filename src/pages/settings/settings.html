@@ -8,7 +8,6 @@
 
 <ion-content padding>
   <ion-list>
-
     <ion-item-group>
       <ion-item-divider>Ajustes</ion-item-divider>
       <ion-item>
@@ -26,19 +25,19 @@
       <ion-item-divider>Informações</ion-item-divider>
       <ion-item detail-push>
         <ion-icon name="stats" item-start></ion-icon>
-        <ion-label>Estatísticas</ion-label>
+        <ion-label (click)="openTarget('StatisticsPage')">Estatísticas</ion-label>
       </ion-item>
       <ion-item detail-push>
         <ion-icon name="help-circle" item-start></ion-icon>
-        <ion-label>Suporte</ion-label>
+        <ion-label (click)="openTarget('SupportPage')">Suporte</ion-label>
       </ion-item>
       <ion-item detail-push>
         <ion-icon name="information-circle" item-start></ion-icon>
-        <ion-label>Sobre</ion-label>
+        <ion-label (click)="openTarget('AboutPage')">Sobre</ion-label>
       </ion-item>
       <ion-item detail-push>
         <ion-icon name="paper" item-start></ion-icon>
-        <ion-label>Política de uso</ion-label>
+        <ion-label (click)="openTarget('TermsOfUsePage')">Política de uso</ion-label>
       </ion-item>
     </ion-item-group>
   </ion-list>
