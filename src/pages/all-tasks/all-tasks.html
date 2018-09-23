@@ -15,7 +15,7 @@
       Concluídas
       <ion-badge float-end color="primary">5</ion-badge></ion-item-divider>
     <ion-list>
-      <ion-item-sliding>
+      <ion-item-sliding #slidingItem>
         <ion-item detail-push>
           <ion-checkbox checked></ion-checkbox>
           <ion-label>Item #1</ion-label>
@@ -25,7 +25,7 @@
             <ion-icon name="edit"></ion-icon>
             Editar
           </button>
-          <button ion-button color="danger">
+          <button ion-button color="danger" (click)="dialogDeleteTask(slidingItem)">
             <ion-icon name="delete"></ion-icon>
             Deletar
           </button>
@@ -40,7 +40,7 @@
       <ion-badge float-end color="danger">15</ion-badge>
     </ion-item-divider>
     <ion-list>
-      <ion-item-sliding>
+      <ion-item-sliding #slidingItem>
         <ion-item detail-push>
           <ion-checkbox></ion-checkbox>
           <ion-label>Item #2</ion-label>
@@ -50,7 +50,7 @@
             <ion-icon name="edit"></ion-icon>
             Editar
           </button>
-          <button ion-button color="danger">
+          <button ion-button color="danger" (click)="dialogDeleteTask(slidingItem)">
             <ion-icon name="delete"></ion-icon>
             Deletar
           </button>

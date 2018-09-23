@@ -11,7 +11,7 @@
 
 <ion-content padding>
     <ion-list>
-      <ion-item-sliding>
+      <ion-item-sliding #slidingItem>
         <ion-item detail-push>
           <ion-checkbox></ion-checkbox>
           <ion-label>Item #1</ion-label>
@@ -21,7 +21,7 @@
             <ion-icon name="edit"></ion-icon>
             Editar
           </button>
-          <button ion-button color="danger">
+          <button ion-button color="danger" (click)="dialogDeleteTask(slidingItem)">
             <ion-icon name="delete"></ion-icon>
             Deletar
           </button>
