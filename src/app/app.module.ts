@@ -18,7 +18,13 @@ import { SettingsPage } from "../pages/settings/settings";
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      platforms: {
+        ios: {
+          backButtonText: 'Voltar'
+        }
+      }
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
