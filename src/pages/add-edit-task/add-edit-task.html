@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Adicionar tarefa</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Título</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Nota</ion-label>
+      <ion-textarea rows="4"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button item-end icon-start color="light">
+    <ion-icon name="camera"></ion-icon>
+    Anexar imagem
+  </button>
+
+  <ion-card>
+    <h2>Previsualização</h2>
+    <img src="http://via.placeholder.com/343x200/d00254/f565845">
+  </ion-card>
+
+  <div padding>
+    <button ion-button block>Salvar</button>
+  </div>
+</ion-content>

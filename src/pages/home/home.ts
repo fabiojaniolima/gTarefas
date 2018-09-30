@@ -9,4 +9,8 @@ export class HomePage {
 
   constructor(public navCtrl: NavController) {}
 
+  openPageAddTask(): void {
+    this.navCtrl.push('AddEditTaskPage');
+  }
+
 }
