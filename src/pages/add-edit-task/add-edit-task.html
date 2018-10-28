@@ -5,15 +5,16 @@
 </ion-header>
 
 <ion-content padding>
+  <form (ngSubmit)="insert()">
   <ion-list>
     <ion-item>
       <ion-label stacked>Título</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="title" name="title"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Nota</ion-label>
-      <ion-textarea rows="4"></ion-textarea>
+      <ion-textarea rows="4" [(ngModel)]="note" name="note"></ion-textarea>
     </ion-item>
   </ion-list>
 
@@ -28,6 +29,7 @@
   </ion-card>
 
   <div padding>
-    <button ion-button block>Salvar</button>
+    <button ion-button block type="submit">Salvar</button>
   </div>
+  </form>
 </ion-content>
