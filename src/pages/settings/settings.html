@@ -23,19 +23,19 @@
     </ion-item-group>
     <ion-item-group>
       <ion-item-divider>Informações</ion-item-divider>
-      <ion-item detail-push>
+      <ion-item (click)="openPage('StatisticsPage')" detail-push>
         <ion-icon name="stats" item-start></ion-icon>
         <ion-label>Estatísticas</ion-label>
       </ion-item>
-      <ion-item detail-push>
+      <ion-item (click)="openPage('SupportPage')" detail-push>
         <ion-icon name="help-circle" item-start></ion-icon>
         <ion-label>Suporte</ion-label>
       </ion-item>
-      <ion-item detail-push>
+      <ion-item (click)="openPage('AboutPage')" detail-push>
         <ion-icon name="information-circle" item-start></ion-icon>
         <ion-label>Sobre</ion-label>
       </ion-item>
-      <ion-item detail-push>
+      <ion-item (click)="openPage('TermsOfUsePage')" detail-push>
         <ion-icon name="paper" item-start></ion-icon>
         <ion-label>Política de uso</ion-label>
       </ion-item>

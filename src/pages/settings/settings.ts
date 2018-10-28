@@ -10,4 +10,8 @@ export class SettingsPage {
 
   constructor(public navCtrl: NavController) {}
 
+  openPage(target: string): void {
+    this.navCtrl.push(target);
+  }
+
 }
