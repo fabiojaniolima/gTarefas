@@ -16,7 +16,7 @@
   <ng-template #tasksList>
     <ion-list>
       <ion-item-sliding *ngFor="let task of tasks" #itemSliding>
-        <ion-item>
+        <ion-item *ngIf="!task.done">
           <ion-checkbox [ngModel]="task.done" (ngModelChange)="task.done=$event; taskProvider.update(task)"></ion-checkbox>
           <ion-label>{{ task.title }}</ion-label>
         </ion-item>

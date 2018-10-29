@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>Todas as tarefas</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="openPageAddTask()">
+      <button ion-button icon-only (click)="onSave('create')">
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-buttons>
@@ -10,98 +10,55 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <ion-item-group margin-bottom="5px">
-      <ion-item-divider color="light">
-        Concluídas
-        <ion-badge float-end color="primary">2</ion-badge>
-      </ion-item-divider>
-      <ion-item-sliding>
-        <ion-item>
-          <ion-checkbox checked></ion-checkbox>
-          <ion-label>Item #1</ion-label>
-        </ion-item>
-        <ion-item-options side="right">
-          <button ion-button color="primary">
-            <ion-icon name="create"></ion-icon>
-            Editar
-          </button>
-          <button ion-button color="danger">
-            <ion-icon name="trash"></ion-icon>
-            Deletar
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
-      <ion-item-sliding>
-        <ion-item>
-          <ion-checkbox checked></ion-checkbox>
-          <ion-label>Item #2</ion-label>
-        </ion-item>
-        <ion-item-options side="right">
-          <button ion-button color="primary">
-            <ion-icon name="create"></ion-icon>
-            Editar
-          </button>
-          <button ion-button color="danger">
-            <ion-icon name="trash"></ion-icon>
-            Deletar
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
-    </ion-item-group>
-    <ion-item-group margin-bottom="5px">
-      <ion-item-divider color="light">
-        Abertas
-        <ion-badge float-end color="danger">3</ion-badge>
-      </ion-item-divider>
-      <ion-item-sliding>
-        <ion-item>
-          <ion-checkbox></ion-checkbox>
-          <ion-label>Item #3</ion-label>
-        </ion-item>
-        <ion-item-options side="right">
-          <button ion-button color="primary">
-            <ion-icon name="create"></ion-icon>
-            Editar
-          </button>
-          <button ion-button color="danger">
-            <ion-icon name="trash"></ion-icon>
-            Deletar
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
-      <ion-item-sliding>
-        <ion-item>
-          <ion-checkbox></ion-checkbox>
-          <ion-label>Item #4</ion-label>
-        </ion-item>
-        <ion-item-options side="right">
-          <button ion-button color="primary">
-            <ion-icon name="create"></ion-icon>
-            Editar
-          </button>
-          <button ion-button color="danger">
-            <ion-icon name="trash"></ion-icon>
-            Deletar
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
-      <ion-item-sliding>
-        <ion-item>
-          <ion-checkbox></ion-checkbox>
-          <ion-label>Item #5</ion-label>
-        </ion-item>
-        <ion-item-options side="right">
-          <button ion-button color="primary">
-            <ion-icon name="create"></ion-icon>
-            Editar
-          </button>
-          <button ion-button color="danger">
-            <ion-icon name="trash"></ion-icon>
-            Deletar
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
-    </ion-item-group>
-  </ion-list>
+
+  <p *ngIf="tasks && tasks.length == 0; else tasksList">Não existem tarefas para exibir</p>
+
+  <ng-template #tasksList>
+    <ion-list>
+      <ion-item-group margin-bottom="5px">
+        <ion-item-divider color="light">
+          Concluídas
+          <ion-badge float-end color="primary">2</ion-badge>
+        </ion-item-divider>
+        <ion-item-sliding *ngFor="let task of tasks" #itemSliding>
+          <ion-item *ngIf="task.done">
+            <ion-checkbox [ngModel]="task.done" (ngModelChange)="task.done=$event; taskProvider.update(task)"></ion-checkbox>
+            <ion-label>{{ task.title }}</ion-label>
+          </ion-item>
+          <ion-item-options side="right">
+            <button ion-button color="primary" (click)="onSave('update', itemSliding, task)">
+              <ion-icon name="create"></ion-icon>
+              Editar
+            </button>
+            <button ion-button color="danger" (click)="onDelete(task)">
+              <ion-icon name="trash"></ion-icon>
+              Deletar
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-item-group>
+      <ion-item-group margin-bottom="5px">
+        <ion-item-divider color="light">
+          Abertas
+          <ion-badge float-end color="danger">3</ion-badge>
+        </ion-item-divider>
+        <ion-item-sliding *ngFor="let task of tasks" #itemSliding>
+          <ion-item *ngIf="!task.done">
+            <ion-checkbox [ngModel]="task.done" (ngModelChange)="task.done=$event; taskProvider.update(task)"></ion-checkbox>
+            <ion-label>{{ task.title }}</ion-label>
+          </ion-item>
+          <ion-item-options side="right">
+            <button ion-button color="primary" (click)="onSave('update', itemSliding, task)">
+              <ion-icon name="create"></ion-icon>
+              Editar
+            </button>
+            <button ion-button color="danger" (click)="onDelete(task)">
+              <ion-icon name="trash"></ion-icon>
+              Deletar
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-item-group>
+    </ion-list>
+  </ng-template>
 </ion-content>

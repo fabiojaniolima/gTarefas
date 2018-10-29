@@ -18,9 +18,11 @@ export class HomePage {
     public taskProvider: TaskProvider
   ) {}
 
+  /*
   openPageAddTask(): void {
     this.navCtrl.push('AddEditTaskPage');
   }
+  */
 
   ionViewDidLoad() {
     this.taskProvider.getAll(true)
@@ -32,7 +34,7 @@ export class HomePage {
   onSave(type: string, ItemSliding?: ItemSliding, task?: Task): void {
     let title: string = type.charAt(0).toUpperCase() + type.substr(1);
     let options = {
-      title: `${title} task`,
+      title: `${(title == 'Create' ? 'Criar' : 'Editar') } tarefa`,
       itemSliding: ItemSliding,
       type: type
     };
@@ -41,12 +43,12 @@ export class HomePage {
 
   onDelete(task: Task): void {
     this.alertCtrl.create({
-      title: `Do you want to delete '${task.title}' task?`,
+      title: `Deletar a tarefa '${task.title}'?`,
       buttons: [
         {
-          text: 'Yes',
+          text: 'Sim',
           handler: () => {
-            let loading: Loading = this.showLoading(`Deleting ${task.title}...`);
+            let loading: Loading = this.showLoading(`Deletando tarefa: ${task.title}`);
 
             this.taskProvider.delete(task.id)
               .then((deleted: boolean) => {
@@ -55,7 +57,7 @@ export class HomePage {
               });
           }
         },
-        'No'
+        'Não'
       ]
     }).present();
   }
@@ -67,19 +69,19 @@ export class HomePage {
       inputs: [
         {
           name: 'title',
-          placeholder: 'Task title'
+          placeholder: 'Nome da tarefa'
         }
       ],
       buttons: [
         {
-          text: 'Cancel',
+          text: 'Cancelar',
           role: 'cancel'
         },
         {
-          text: 'Save',
+          text: 'Salvar',
           handler: (data) => {
 
-            let loading: Loading = this.showLoading(`Saving ${data.title} task...`);
+            let loading: Loading = this.showLoading(`Salvando tarefa: ${data.title}`);
             let contextTask: Task;
 
             switch(options.type) {
@@ -114,7 +116,7 @@ export class HomePage {
 
   private showLoading(message?: string): Loading {
     let loading: Loading = this.loadingCtrl.create({
-      content: message || 'Please wait...'
+      content: message || 'Aguarde...'
     });
     loading.present();
     return loading;
